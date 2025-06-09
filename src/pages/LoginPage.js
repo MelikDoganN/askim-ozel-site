@@ -8,8 +8,8 @@ function LoginPage() {
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
 
-  const correctUsername = 'canim';
-  const correctPassword = 'gulum2023';
+  const correctUsername = 'zeynoşimo';
+  const correctPassword = 'şemeşimo';
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -91,10 +91,10 @@ function LoginPage() {
               Bu sayfada sana özel bir sürpriz var. Ama önce birkaç küçük soru ve görev var:
             </p>
             <ul style={{ textAlign: 'left', marginTop: '20px', fontSize: '16px', color: '#333' }}>
-              <li>💭 İlk tanıştığımız tarihi hatırlıyor musun?</li>
-              <li>📸 İlk birlikte çekildiğimiz fotoğraf nerede çekilmişti?</li>
-              <li>🎶 O gün çalan bir şarkıyı hatırlıyor musun?</li>
-              <li>❤️ Sana olan hislerimi açıklamak için yazdığım bir mektup olacak... onu okumaya hazır mısın?</li>
+              <li>💭 İlk tanıştığımız tarihi hatırlıyor musun şimom</li>
+              <li>📸 İlk birlikte çekildiğimiz fotoğraf nerede çekindik</li>
+              <li>🎶 O gün çalan bir şarkıyı hatırlıyor musun şimom</li>
+              <li>❤️ Sana olan hislerimi açıklamak için yazdığım bir mektup olacak seni çok seviyorum kedim</li>
             </ul>
             <button style={{ ...styles.button, marginTop: '30px' }} onClick={handleContinue}>
               Hazırım ✨
