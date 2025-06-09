@@ -16,19 +16,23 @@ function QuestionPage2() {
         0% { transform: translateY(0) scale(1); opacity: 1; }
         100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
       }
+
       .heart {
         position: absolute;
         bottom: 0;
         width: 20px;
         height: 20px;
-        background-color: #c28ef5;
+        background-color: #ff5e78;
         animation: floatHearts 6s linear infinite;
         clip-path: polygon(50% 0%, 61% 20%, 80% 20%, 100% 40%, 80% 60%, 50% 100%, 20% 60%, 0% 40%, 20% 20%, 39% 20%);
-        opacity: 0.7;
+        opacity: 0.6;
+        pointer-events: none;
+        z-index: 0;
       }
     `;
     document.head.appendChild(style);
-    const container = document.getElementById('heart-bg');
+
+    const container = document.getElementById('hearts2');
     if (container) {
       const interval = setInterval(() => {
         const heart = document.createElement('div');
@@ -36,7 +40,8 @@ function QuestionPage2() {
         heart.style.left = Math.random() * 100 + 'vw';
         container.appendChild(heart);
         setTimeout(() => container.removeChild(heart), 6000);
-      }, 300);
+      }, 400);
+
       return () => clearInterval(interval);
     }
   }, []);
@@ -58,7 +63,8 @@ function QuestionPage2() {
 
   return (
     <div style={styles.container}>
-      <div id="heart-bg" style={styles.heartContainer}></div>
+      <div id="hearts2" style={styles.heartLayer}></div>
+
       {!answered ? (
         <>
           <h2 style={styles.title}>Soru 2</h2>
@@ -78,9 +84,12 @@ function QuestionPage2() {
       ) : (
         <div style={styles.response}>
           <h3>Bravo! 🎶</h3>
-          <p>Carla'nın sesi ikimizin dünyasını sanki özetliyordu.  
-             O sesi duyduğumda hep seni hatırlıyorum. 💞 Son birkaç gündür dinlemediğim saniye yok.  
-             Nereye baksam, nereye çevirsem gözlerimi… seni görüyorum.</p>
+          <p>
+            Carla'nın sesi ikimizin dünyasını sanki özetliyordu.<br />
+            O sesi duyduğumda hep seni hatırlıyorum. 💞<br />
+            Son birkaç gündür dinlemediğim saniye yok.<br />
+            Nereye baksam, nereye çevirsem gözlerimi… seni görüyorum.
+          </p>
           <button onClick={handleNext} style={styles.button}>Devam Et ❤️</button>
         </div>
       )}
@@ -90,26 +99,27 @@ function QuestionPage2() {
 
 const styles = {
   container: {
-    position: 'relative',
     textAlign: 'center',
     marginTop: '80px',
     padding: '20px',
     fontFamily: 'Arial, sans-serif',
     minHeight: '100vh',
-    background: 'linear-gradient(to bottom, #f3e6ff, #e6ccff)',
-    overflow: 'hidden'
+    background: 'linear-gradient(to top left, #f3e6ff, #e6ccff)',
+    position: 'relative',
+    overflow: 'hidden',
   },
-  heartContainer: {
+  heartLayer: {
     position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
+    pointerEvents: 'none',
     zIndex: 0,
   },
   title: {
     fontSize: '24px',
-    color: '#8e44ad',
+    color: '#9b59b6',
     marginBottom: '10px',
     zIndex: 1,
   },
@@ -117,12 +127,9 @@ const styles = {
     fontSize: '18px',
     color: '#444',
     marginBottom: '20px',
-    zIndex: 1,
   },
   form: {
     marginBottom: '15px',
-    zIndex: 1,
-    position: 'relative',
   },
   input: {
     padding: '10px 15px',
@@ -148,7 +155,6 @@ const styles = {
   },
   response: {
     marginTop: '30px',
-    zIndex: 1,
   },
 };
 

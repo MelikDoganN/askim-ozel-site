@@ -16,6 +16,7 @@ function QuestionPage4() {
         0% { transform: translateY(0) scale(1); opacity: 1; }
         100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
       }
+
       .heart {
         position: absolute;
         bottom: 0;
@@ -25,9 +26,12 @@ function QuestionPage4() {
         animation: floatHearts 6s linear infinite;
         clip-path: polygon(50% 0%, 61% 20%, 80% 20%, 100% 40%, 80% 60%, 50% 100%, 20% 60%, 0% 40%, 20% 20%, 39% 20%);
         opacity: 0.7;
+        pointer-events: none;
+        z-index: 0;
       }
     `;
     document.head.appendChild(style);
+
     const container = document.getElementById('heart-bg');
     if (container) {
       const interval = setInterval(() => {
@@ -78,8 +82,10 @@ function QuestionPage4() {
       ) : (
         <div style={styles.response}>
           <h3>Harika hatırladın! 📸</h3>
-          <p>O Migros fotoğrafı bizim en sade ama en gerçek anımızdı.  
-             Her fotoğraf bir kareyse, sen benim tüm filmimsin.</p>
+          <p>
+            O Migros fotoğrafı bizim en sade ama en gerçek anımızdı. <br />
+            Her fotoğraf bir kareyse, sen benim tüm filmimsin. 🎬❤️
+          </p>
           <button onClick={handleNext} style={styles.button}>Devam Et ❤️</button>
         </div>
       )}
@@ -104,20 +110,27 @@ const styles = {
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: 0
+    zIndex: 0,
+    pointerEvents: 'none' // 💡 Butonlara tıklamayı engellemesin
   },
   title: {
     fontSize: '24px',
     color: '#e67e22',
     marginBottom: '10px',
+    zIndex: 1,
+    position: 'relative'
   },
   question: {
     fontSize: '18px',
     color: '#444',
     marginBottom: '20px',
+    zIndex: 1,
+    position: 'relative'
   },
   form: {
     marginBottom: '15px',
+    zIndex: 1,
+    position: 'relative'
   },
   input: {
     padding: '10px 15px',
@@ -126,6 +139,8 @@ const styles = {
     border: '1px solid #ccc',
     width: '80%',
     maxWidth: '300px',
+    zIndex: 1,
+    position: 'relative'
   },
   button: {
     marginTop: '15px',
@@ -136,13 +151,19 @@ const styles = {
     border: 'none',
     borderRadius: '10px',
     cursor: 'pointer',
+    zIndex: 1,
+    position: 'relative'
   },
   error: {
     color: 'red',
     marginTop: '10px',
+    zIndex: 1,
+    position: 'relative'
   },
   response: {
     marginTop: '30px',
+    zIndex: 1,
+    position: 'relative'
   }
 };
 

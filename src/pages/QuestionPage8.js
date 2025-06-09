@@ -25,9 +25,12 @@ function QuestionPage8() {
         animation: floatHearts 6s linear infinite;
         clip-path: polygon(50% 0%, 61% 20%, 80% 20%, 100% 40%, 80% 60%, 50% 100%, 20% 60%, 0% 40%, 20% 20%, 39% 20%);
         opacity: 0.7;
+        pointer-events: none;
+        z-index: 0;
       }
     `;
     document.head.appendChild(style);
+
     const container = document.getElementById('heart-bg');
     if (container) {
       const interval = setInterval(() => {
@@ -83,9 +86,11 @@ function QuestionPage8() {
       ) : (
         <div style={styles.response}>
           <h3>Ayyy evet! 📸</h3>
-          <p>Mirullah’ın ilk defa bir güzel şeye vesile olmuştu.  
-             O kadar mutlu etmiştiki beni bu fotoğraf... anlatamam.  
-             Gözlerin ışıldarken zamanı durdurmuştum. 🧡</p>
+          <p>
+            Mirullah’ın ilk defa bir güzel şeye vesile olmuştu. <br />
+            O kadar mutlu etmiştiki beni bu fotoğraf... anlatamam. <br />
+            Gözlerin ışıldarken zamanı durdurmuştum. 🧡
+          </p>
           <button onClick={handleNext} style={styles.button}>Devam Et ❤️</button>
         </div>
       )}
@@ -111,16 +116,21 @@ const styles = {
     width: '100%',
     height: '100%',
     zIndex: 0,
+    pointerEvents: 'none'
   },
   title: {
     fontSize: '24px',
     color: '#d4a017',
     marginBottom: '10px',
+    zIndex: 1,
+    position: 'relative'
   },
   question: {
     fontSize: '18px',
     color: '#444',
     marginBottom: '20px',
+    zIndex: 1,
+    position: 'relative'
   },
   image: {
     maxWidth: '300px',
@@ -128,9 +138,13 @@ const styles = {
     borderRadius: '12px',
     marginBottom: '20px',
     border: '2px solid #ccc',
+    zIndex: 1,
+    position: 'relative'
   },
   form: {
     marginBottom: '15px',
+    zIndex: 1,
+    position: 'relative'
   },
   input: {
     padding: '10px 15px',
@@ -139,6 +153,8 @@ const styles = {
     border: '1px solid #ccc',
     width: '80%',
     maxWidth: '300px',
+    zIndex: 1,
+    position: 'relative'
   },
   button: {
     marginTop: '15px',
@@ -149,13 +165,19 @@ const styles = {
     border: 'none',
     borderRadius: '10px',
     cursor: 'pointer',
+    zIndex: 1,
+    position: 'relative'
   },
   error: {
     color: 'red',
     marginTop: '10px',
+    zIndex: 1,
+    position: 'relative'
   },
   response: {
     marginTop: '30px',
+    zIndex: 1,
+    position: 'relative'
   }
 };
 
