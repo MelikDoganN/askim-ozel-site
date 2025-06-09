@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function QuestionPage7() {
@@ -8,6 +8,38 @@ function QuestionPage7() {
   const [userAnswer, setUserAnswer] = useState('');
   const [answered, setAnswered] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes floatHearts {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+      }
+      .heart {
+        position: absolute;
+        bottom: 0;
+        width: 20px;
+        height: 20px;
+        background-color: #b084f9;
+        animation: floatHearts 6s linear infinite;
+        clip-path: polygon(50% 0%, 61% 20%, 80% 20%, 100% 40%, 80% 60%, 50% 100%, 20% 60%, 0% 40%, 20% 20%, 39% 20%);
+        opacity: 0.7;
+      }
+    `;
+    document.head.appendChild(style);
+    const container = document.getElementById('heart-bg');
+    if (container) {
+      const interval = setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        container.appendChild(heart);
+        setTimeout(() => container.removeChild(heart), 6000);
+      }, 300);
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +58,7 @@ function QuestionPage7() {
 
   return (
     <div style={styles.container}>
+      <div id="heart-bg" style={styles.heartContainer}></div>
       {!answered ? (
         <>
           <h2 style={styles.title}>Soru 7</h2>
@@ -65,10 +98,22 @@ const styles = {
     marginTop: '80px',
     padding: '20px',
     fontFamily: 'Arial, sans-serif',
+    minHeight: '100vh',
+    background: 'linear-gradient(to bottom right, #f5e6ff, #e0ccff)',
+    overflow: 'hidden',
+    position: 'relative'
+  },
+  heartContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: 0,
   },
   title: {
     fontSize: '24px',
-    color: '#d63384',
+    color: '#8e44ad',
     marginBottom: '10px',
   },
   question: {
@@ -98,7 +143,7 @@ const styles = {
     marginTop: '15px',
     padding: '10px 20px',
     fontSize: '16px',
-    backgroundColor: '#ff69b4',
+    backgroundColor: '#9b59b6',
     color: 'white',
     border: 'none',
     borderRadius: '10px',
